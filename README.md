@@ -1,8 +1,8 @@
-# Gallery Manager WordPress Plugin
+# Render Manager WordPress Plugin
 
 ## About
 
-Gallery Manager is a WordPress plugin designed to showcase advanced development techniques within the WordPress ecosystem. While not intended for general use, it serves as a technical demonstration of specific functionalities.
+Render Manager is a WordPress plugin designed to showcase advanced development techniques within the WordPress ecosystem. While not intended for general use, it serves as a technical demonstration of specific functionalities.
 
 What I'm aiming to do is create a plugin that catalogs large collections of AI generated images, scrapes them for their meta data, and stores the image and the meta data in Wordpress in a way that's easy to be referenced, should you ever 
 desire to revisit a prompt, or see what settings ou used to create something. 
