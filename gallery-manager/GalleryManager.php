@@ -36,7 +36,6 @@ class GalleryManager {
 
     public function enqueue_scripts(): void {
         wp_enqueue_script ('gallery-manager-script', plugin_dir_url(__FILE__) . 'functions.js', array('jquery'), '1.0', true);
-      //  wp_enqueue_style ('gallery-manager-script', plugin_dir_url( __FILE__ ) . 'base.css' );
     }
 
     public function __construct(){
