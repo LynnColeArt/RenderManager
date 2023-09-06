@@ -1,6 +1,6 @@
 <?php
 trait ImageParser {
-    public function parse_raw_data($raw_data): array {
+    public function parse_raw_data(string $raw_data): array {
         $parsed_data = [];
         $lines = explode(',', $raw_data);
 

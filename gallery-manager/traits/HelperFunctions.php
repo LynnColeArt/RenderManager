@@ -3,7 +3,7 @@
 //This is where my helper functions live.
 
 trait HelperFunctions {
-    private function to_lower_snake_case($string): string {
+    private function to_lower_snake_case(string $string): string {
         $string = preg_replace('/[\s-]+/', '_', $string);
         return strtolower($string);
     }
@@ -14,7 +14,9 @@ trait HelperFunctions {
         if ($dataType === 'array' || $dataType === 'object') {
             print_r($data);
         } else {
-            var_dump($data);
+            echo '<pre>';
+            echo ($data);
+            echo '</pre>';
         }
         echo "</pre>";
     }

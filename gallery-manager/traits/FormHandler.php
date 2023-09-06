@@ -8,7 +8,7 @@ trait FormHandler {
             $zip = new ZipArchive();
 
             if ($zip->open($zip_file) === true) {
-                $extract_dir = $gallery_dir . "/".uniqid().'/';
+                $extract_dir = $gallery_dir . "/".uniqid().'/'; //This creates a unique directory for each zip uploaded.
                 $zip->extractTo($extract_dir);
                 $zip->close();
                 $uploaded_images = [];
@@ -49,34 +49,4 @@ trait FormHandler {
         wp_die("Failed to upload Zip file.");
     }
 
-    public function create_ai_art_post($attached_images, $png_data): void {
-    foreach ($attached_images as $index => $attached_image) {
-
-        $attachment_id = $attached_image;
-        $post_title = 'Item: ' . uniqid();
-        
-        $post_data = array(
-            'post_title' => $post_title,
-            'post_status' => 'publish',
-            'post_type' => 'ai_art_gallery',
-            'post_content' => '',
-        );
-
-        $post_id = wp_insert_post($post_data);
-
-        if ($post_id) {
-            set_post_thumbnail($post_id, $attachment_id);
-
-            $meta_data = array(
-                'prompt' => @$png_data[$index]['top']['prompt'],
-                'negative_prompt' => @$png_data[$index]['top']['negative_prompt'],
-                'meta_json' => @$png_data[$index]['json'],
-            );
-
-            foreach ($meta_data as $meta_key => $meta_value) {
-                update_post_meta($post_id, $meta_key, $meta_value);
-            }
-        }
-    }
-}
 }

@@ -32,7 +32,7 @@ trait AiArtPresentation
         }
     }
 
-    public function render_ai_art_gallery_meta_box($post, $metabox): void
+    public function render_ai_art_gallery_meta_box(object $post, array $metabox): void
     {
         $field = $metabox['args'];
         $value = get_post_meta($post->ID, $field['id'], true);
@@ -50,9 +50,9 @@ trait AiArtPresentation
         }
     }
 
-    public function add_custom_columns($columns): array
+    public function add_custom_columns(): array
     {
-        $new_columns = [
+        return [
             'cb' => '<input type="checkbox" />',
             'title' => 'Title',
             'prompt' => 'Prompt',
@@ -60,11 +60,9 @@ trait AiArtPresentation
             'featured_image' => 'Featured Image',
             'date' => 'Date',
         ];
-
-        return $new_columns;
     }
 
-    public function render_custom_columns($column, $post_id): void
+    public function render_custom_columns(string $column, int $post_id): void
     {
         switch ($column) {
             case 'prompt':
@@ -82,7 +80,7 @@ trait AiArtPresentation
         }
     }
 
-    public function populate_custom_columns($column, $post_id): void
+    public function populate_custom_columns(string $column, int $post_id): void
     {
         if ($column === 'featured_image') {
             if (has_post_thumbnail($post_id)) {
@@ -101,14 +99,14 @@ trait AiArtPresentation
        
     }
 
-    public function add_featured_image_column($columns): array
+    public function add_featured_image_column(array $columns): array
     {
         // Add the featured image column after the title column
         $columns['featured_image'] = 'Featured Image';
         return $columns;
     }
 
-    public function display_featured_image_column($column, $post_id): void
+    public function display_featured_image_column(string $column, int $post_id): void
     {
         if ($column === 'featured_image') {
             // Get the featured image URL
