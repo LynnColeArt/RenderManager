@@ -29,7 +29,7 @@ class RenderManager {
     use AiArtContentType;
     use AiArtPresentation;
     use AttachmentHandler;
-	use FormHandler;
+    use FormHandler;
     use AiArtContentType;
     use Webforms;
     use CustomBlocks;
